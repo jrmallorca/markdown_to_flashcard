@@ -17,13 +17,10 @@ class GetMarkdownFileScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(child: _buildBody(context)),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: ClipRRect(
-        borderRadius: BorderRadius.circular(32),
-        child: FloatingActionButton.extended(
-          label: const Text('Select Markdown Files'),
-          onPressed: () =>
-              context.read<MarkdownToFlashcardCubit>().getMarkdownFiles(),
-        ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.import_export),
+        onPressed: () =>
+            context.read<MarkdownToFlashcardCubit>().getMarkdownFiles(),
       ),
       bottomNavigationBar: const BottomAppBar(
         shape: AutomaticNotchedShape(
