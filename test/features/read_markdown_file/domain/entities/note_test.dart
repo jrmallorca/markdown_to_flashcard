@@ -18,6 +18,7 @@ void main() {
       File('test/fixtures/file_with__deck_multiple-tags_title_multiple-qa.md');
   final File deckMultipleTagsTitleMultipleQaWithIdsFile = File(
       'test/fixtures/file_with__deck_multiple-tags_title_multiple-qa-with-ids.md');
+  final File tagsAsList = File('test/fixtures/tags_as_list.md');
 
   group('get deck', () {
     String expected = 'test deck';
@@ -61,6 +62,16 @@ void main() {
         "WHEN 'get tags' is called, "
         'THEN return the note\'s tags ', () async {
       File file = deckMultipleTagsTitleMultipleQaFile;
+      Note note = Note(fileContents: file.readAsStringSync());
+
+      expect(note.tags, expected);
+    });
+
+    test(
+        'GIVEN a note with tags as list, '
+        "WHEN 'get tags' is called, "
+        'THEN return the note\'s tags ', () async {
+      File file = tagsAsList;
       Note note = Note(fileContents: file.readAsStringSync());
 
       expect(note.tags, expected);
